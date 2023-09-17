@@ -33,7 +33,7 @@ signal MatrizAc : Matriz_2x2;
 signal MatrizFinal : MatrizF;
 signal atual, prox : estados;
 
-signal rstA, rstB, rstC, rstD, rstSomas : STD_LOGIC;
+signal rstA, rstB, rstC, rstD : STD_LOGIC;
 signal loadA, loadB, loadC, loadD : STD_LOGIC;
 signal doneA, doneB, doneC, doneD : boolean := false;
 signal multiplica, pronto : STD_LOGIC := '0';
@@ -163,7 +163,6 @@ begin
             acumulador := (others => '0');
             for i in 0 to 3 loop
                 for j in 0 to 3 loop
-                    --MatrizB(i,j) <= to_signed(to_integer(unsigned( B(8 * (i * 4 + j) to 8 * (i * 4 + j) + 7))), 8);
                     MatrizB(i,j) <= to_signed(to_integer(unsigned( entrada(8 * (i * 4 + j) + 128 to 8 * (i * 4 + j) + 135))), 8);
                     acumulador := acumulador + MatrizB(i,j);
                 end loop;
@@ -202,7 +201,6 @@ begin
             acumulador := (others => '0');
             for i in 0 to 3 loop
                 for j in 0 to 3 loop
-                    --MatrizC(i,j) <= to_signed(to_integer(unsigned( C(8 * (i * 4 + j) to 8 * (i * 4 + j) + 7))), 8);
                     MatrizC(i,j) <= to_signed(to_integer(unsigned( entrada(8 * (i * 4 + j) + 256 to 8 * (i * 4 + j) + 263))), 8);
                     acumulador := acumulador + MatrizC(i,j);
                 end loop;
@@ -243,7 +241,6 @@ begin
             acumulador := (others => '0');
             for i in 0 to 3 loop
                 for j in 0 to 3 loop
-                    --MatrizD(i,j) <= to_signed(to_integer(unsigned( D(8 * (i * 4 + j) to 8 * (i * 4 + j) + 7))), 8);
                     MatrizD(i,j) <= to_signed(to_integer(unsigned( entrada(8 * (i * 4 + j) + 384 to 8 * (i * 4 + j) + 391))), 8);
                     acumulador := acumulador + MatrizD(i,j);
                     
